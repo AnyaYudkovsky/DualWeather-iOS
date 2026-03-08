@@ -56,3 +56,43 @@ struct Coordinates: Codable {
     let lat: Double
     let lon: Double
 }
+
+// MARK: - Forecast Models
+
+struct ForecastResponse: Codable {
+    let list: [ForecastItem]
+    let city: ForecastCity
+}
+
+struct ForecastItem: Codable, Identifiable {
+    var id: Int { dt }
+    let dt: Int
+    let main: MainWeather
+    let weather: [WeatherCondition]
+    let wind: Wind
+    let visibility: Int?
+    let pop: Double
+    let dtTxt: String
+
+    enum CodingKeys: String, CodingKey {
+        case dt, main, weather, wind, visibility, pop
+        case dtTxt = "dt_txt"
+    }
+}
+
+struct ForecastCity: Codable {
+    let name: String
+    let country: String
+    let timezone: Int
+}
+
+struct DailyForecast: Identifiable {
+    let id = UUID()
+    let date: Date
+    let dayName: String
+    let high: Double
+    let low: Double
+    let icon: String
+    let description: String
+    let pop: Double
+}
