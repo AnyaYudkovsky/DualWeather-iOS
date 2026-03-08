@@ -66,6 +66,15 @@ struct CurrentWeatherView: View {
                 headerSection
                 temperatureSection
                 feelsLikeRow
+
+                if viewModel.forecastData != nil {
+                    HourlyForecastView(viewModel: viewModel)
+                        .padding(.top, 8)
+
+                    DailyForecastView(viewModel: viewModel)
+                        .padding(.top, 8)
+                }
+
                 detailsSection
                 footerSection
             }

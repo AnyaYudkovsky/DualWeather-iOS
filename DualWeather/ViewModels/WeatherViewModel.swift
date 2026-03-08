@@ -136,7 +136,15 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     // MARK: - SF Symbol Mapping
 
     var sfSymbolName: String {
-        switch weatherIconCode {
+        Self.sfSymbolName(for: weatherIconCode)
+    }
+
+    var sfSymbolColor: Color {
+        Self.sfSymbolColor(for: weatherIconCode)
+    }
+
+    static func sfSymbolName(for iconCode: String) -> String {
+        switch iconCode {
         case "01d": return "sun.max.fill"
         case "01n": return "moon.fill"
         case "02d": return "cloud.sun.fill"
@@ -153,8 +161,8 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     }
 
-    var sfSymbolColor: Color {
-        switch weatherIconCode {
+    static func sfSymbolColor(for iconCode: String) -> Color {
+        switch iconCode {
         case "01d": return .yellow
         case "01n": return .indigo
         case "02d", "02n": return .orange
