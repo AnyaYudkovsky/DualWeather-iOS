@@ -1,0 +1,16 @@
+# Secrets
+Secrets.plist
+
+# macOS
+.DS_Store
+
+# Xcode
+xcuserdata/
+DerivedData/
+*.xccheckout
+*.moved-aside
+build/
+*.hmap
+
+# CocoaPods
+Pods/
